@@ -1,5 +1,5 @@
 "use client";
-import { useFavourites } from "@/app/context/FavouritesContext";
+import { useFavourites } from "@/context/FavouritesContext";
 import Image from "next/image";
 
 export default function FavouritesPage() {
@@ -7,7 +7,9 @@ export default function FavouritesPage() {
 
   if (favourites.length === 0) {
     return (
-      <p className="text-white text-center mt-15 text-3xl">No favourites added yet ❤️</p>
+      <p className="text-white text-center mt-15 text-3xl">
+        No favourites added yet ❤️
+      </p>
     );
   }
 
@@ -22,7 +24,9 @@ export default function FavouritesPage() {
             height={300}
             className="border-4 border-red-500 rounded-2xl"
           />
-          <p className="text-center mt-2 text-2xl font-bold">{movie["#TITLE"]}</p>
+          <p className="text-center mt-2 text-2xl font-bold">
+            {movie["#TITLE"]}
+          </p>
         </div>
       ))}
     </div>

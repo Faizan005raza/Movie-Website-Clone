@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import Image from "next/image";
 import { useFavourites } from "../context/FavouritesContext";
+import Link from "next/link";
 
 interface Movie {
   "#TITLE": string;
@@ -12,7 +13,9 @@ interface Movie {
 export default function MovieList() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const { favourites, toggleFavourite } = useFavourites();
-
+  const slugify = (title: string) => {
+    return title.toUpperCase().replace(/\s+/g, "-");
+  };
   useEffect(() => {
     fetch("https://imdb.iamidiotareyoutoo.com/search?q=Captain")
       .then((res) => res.json())
@@ -36,13 +39,17 @@ export default function MovieList() {
               key={movie["#TITLE"]}
               className="relative border border-white p-3 rounded m-10"
             >
-              <Image
-                src={movie["#IMG_POSTER"]}
-                alt={movie["#TITLE"]}
-                width={500}
-                height={100}
-                className="rounded-2xl"
-              />
+              <Link href={`/movies/${slugify(movie["#TITLE"])}`}>
+                <div className="cursor-pointer">
+                  <Image
+                    src={movie["#IMG_POSTER"]}
+                    alt={movie["#TITLE"]}
+                    width={500}
+                    height={100}
+                    className="rounded-2xl"
+                  />
+                </div>
+              </Link>
 
               <span
                 className="absolute top-2 right-4 cursor-pointer"

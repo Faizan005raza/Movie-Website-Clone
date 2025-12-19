@@ -1,14 +1,14 @@
 "use client";
 import Image from "next/image";
-import { Movie, useFavourites } from "../context/FavouritesContext";
+import { Movie, useFavourites } from "@/context/FavouritesContext";
 
 interface Props {
   movie: Movie;
 }
 
 export default function HeartIcon({ movie }: Props) {
-  const { toggleFavourite, isFavourite } = useFavourites();
-  const active = isFavourite(movie.id);
+  const { toggleFavourite, favourites } = useFavourites();
+  const active = favourites.some((m) => m["#TITLE"] === movie["#TITLE"]);
 
   return (
     <Image

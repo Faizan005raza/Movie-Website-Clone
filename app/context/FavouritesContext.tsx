@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useState, useEffect } from "react";
 
-interface Movie {
+export interface Movie {
   "#TITLE": string;
   "#IMG_POSTER": string;
 }
