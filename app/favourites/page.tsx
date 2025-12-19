@@ -1,5 +1,5 @@
 "use client";
-import { useFavourites } from "@/context/FavouritesContext";
+import { useFavourites } from "../context/FavouritesContext";
 import Image from "next/image";
 
 export default function FavouritesPage() {
