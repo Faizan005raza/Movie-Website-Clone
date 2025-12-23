@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import { FavouritesProvider } from "./context/FavouritesContext";
+import SessionWrapper from "./components/SessionWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,15 +27,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900`}
-      >
-      <FavouritesProvider>
-        <Navbar />
-        {children}
-      </FavouritesProvider>     
-      </body>
-    </html>
+    <SessionWrapper>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900`}
+        >
+          <FavouritesProvider>
+            <Navbar />
+            {children}
+          </FavouritesProvider>
+        </body>
+      </html>
+    </SessionWrapper>
   );
 }

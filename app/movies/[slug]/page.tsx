@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export default function MovieDetailPage() {
   const params = useParams();
   const slug = params.slug;
-  //   const [response, setResponse] = useState<number>(0)
+
 
   useEffect(() => {
     fetch("https://imdb.iamidiotareyoutoo.com")
