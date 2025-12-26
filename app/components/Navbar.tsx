@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import LogoutButton from "./LogoutButton";
+import Image from "next/image";
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -11,7 +12,7 @@ export default function Navbar() {
       <div className="px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <img
+            <Image
               src="/movielogo.webp"
               alt="Company Logo"
               width={60}
